@@ -96,6 +96,9 @@ Generate the static report web-application folder using allure-commandline
 
 ![Screenshot-1](https://github.com/Mamun104/api-automation-testing-with-newman-reporter-allure-using-postman/assets/78067017/9d14d439-c52c-4445-9a9a-ce896e915b80)
 
+![image](https://github.com/Mamun104/api-automation-testing-with-newman-reporter-allure-using-postman/assets/78067017/ba9026de-5eff-4f74-adde-b61d8c21fd2a)
+
+
 
 ![Screenshot-2](https://github.com/Mamun104/api-automation-testing-with-newman-reporter-allure-using-postman/assets/78067017/1dc83ef2-841f-4d29-a492-a53f6b75af7b)
 
