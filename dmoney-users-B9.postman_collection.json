@@ -1,0 +1,2043 @@
+{
+	"info": {
+		"_postman_id": "99544b00-a94d-4053-bed2-e305bdfe9691",
+		"name": "dmoney-users-B9",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16548351"
+	},
+	"item": [
+		{
+			"name": "User Can't Login With Invalid Email",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"User can't login with invalid email\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.message).to.contains(\"User not found\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check the status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time check\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check the POST method request\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([404, 499]);\r",
+							"\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check the body matches string from response body\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"User not found\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check the header\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check the status code is Not Found\", function () {\r",
+							"    pm.response.to.have.status(\"Not Found\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"salman@roadtocareer.ne\",\r\n    \"password\":\"12345\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/user/login",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"user",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User Can't Login With Invalid Password",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"User can't login with invalid password\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.message).to.contains(\"Password incorrect\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check the status code is 401\", function () {\r",
+							"    pm.response.to.have.status(401);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time check\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check the POST method request\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([401, 499]);\r",
+							"\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check the body matches string from response body\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Password incorrect\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check the header\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check the status code is Unauthorized\", function () {\r",
+							"    pm.response.to.have.status(\"Unauthorized\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"salman@roadtocareer.net\",\r\n    \"password\":\"123\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/user/login",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"user",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User Can't Login With Valid Email And Invalid Password",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"User can't login with invalid password\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.message).to.contains(\"Password incorrect\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check the status code is 401\", function () {\r",
+							"    pm.response.to.have.status(401);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time check\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check the POST method request\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([401, 499]);\r",
+							"\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check the body matches string from response body\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Password incorrect\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check the header\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check the status code is Unauthorized\", function () {\r",
+							"    pm.response.to.have.status(\"Unauthorized\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"salman@roadtocareer.net\",\r\n    \"password\":\"123\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/user/login",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"user",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User Can't Login With  Invalid Email And Valid Password",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"User can't login with invalid email\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.message).to.contains(\"User not found\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check the status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time check\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check the POST method request\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([404, 499]);\r",
+							"\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check the body matches string from response body\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"User not found\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check the header\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check the status code is Not Found\", function () {\r",
+							"    pm.response.to.have.status(\"Not Found\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"salman@roadtocareer.ne\",\r\n    \"password\":\"1234\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/user/login",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"user",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User Can Login With Valid Credential",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData= pm.response.json();\r",
+							"var jwtToken= jsonData.token;\r",
+							"\r",
+							"pm.collectionVariables.set(\"token\",jwtToken)\r",
+							"pm.environment.set(\"token\",jwtToken)\r",
+							"\r",
+							"\r",
+							"\r",
+							"pm.test(\"User Can Login With Valid Credential\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.message).to.contains(\"Login successfully\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check the status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time check\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check the POST method request\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 299]);\r",
+							"\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check the body matches string from response body\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Admin\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check the header\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check the status code is OK\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"salman@roadtocareer.net\",\r\n    \"password\":\"1234\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/user/login",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"user",
+						"login"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "User Login",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"salman@roadtocareer.net\",\r\n    \"password\":\"1234\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/user/login",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"user",
+								"login"
+							]
+						}
+					},
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Can't Create a User With Invalid Token",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var randNumber=_.random(1000000,9999999);\r",
+							"var prefix=\"0150\";\r",
+							"var phoneNumber= prefix+randNumber\r",
+							"pm.collectionVariables.set(\"phoneNumber\", phoneNumber)\r",
+							"pm.collectionVariables.set(\"nid\", randNumber)\r",
+							"\r",
+							"pm.environment.set(\"phoneNumber\", phoneNumber)\r",
+							"pm.environment.set(\"nid\", randNumber)"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData= pm.response.json();\r",
+							"var customerId= jsonData?.user?.id;\r",
+							"var customerName=jsonData?.user?.name;\r",
+							"var customerEmail=jsonData?.user?.email;\r",
+							"\r",
+							"pm.collectionVariables.set(\"customerId\",customerId);\r",
+							"pm.collectionVariables.set(\"customerName\",customerName);\r",
+							"pm.collectionVariables.set(\"customerEmail\",customerEmail);\r",
+							"\r",
+							"pm.environment.set(\"customerId\",customerId);\r",
+							"pm.environment.set(\"customerName\",customerName);\r",
+							"pm.environment.set(\"customerEmail\",customerEmail);\r",
+							"\r",
+							"pm.test(\"Can't create a user with an invalid token\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.error.message).to.contains(\"Token expired!\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check the status code is 403\", function () {\r",
+							"    pm.response.to.have.status(403);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time check\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check the POST method request\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([403, 499]);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check the body matches string from response body\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Token expired!\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check the header\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check the status code is Forbidden\", function () {\r",
+							"    pm.response.to.have.status(\"Forbidden\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "ghg",
+						"type": "text"
+					},
+					{
+						"key": "X-AUTH-SECRET-KEY",
+						"value": "{{secretKey}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"{{$randomFullName}}\",\r\n    \"email\":\"{{$randomFirstName}}@test.com\",\r\n    \"password\":\"1234\",\r\n    \"phone_number\":\"{{phoneNumber}}\",\r\n    \"nid\":\"{{nid}}\",\r\n    \"role\":\"Customer\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/user/create",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"user",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Can't Create a User With Invalid SECRET-KEY",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var randNumber=_.random(1000000,9999999);\r",
+							"var prefix=\"0150\";\r",
+							"var phoneNumber= prefix+randNumber\r",
+							"pm.collectionVariables.set(\"phoneNumber\", phoneNumber)\r",
+							"pm.collectionVariables.set(\"nid\", randNumber)\r",
+							"\r",
+							"pm.environment.set(\"phoneNumber\", phoneNumber)\r",
+							"pm.environment.set(\"nid\", randNumber)"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData= pm.response.json();\r",
+							"var customerId= jsonData?.user?.id;\r",
+							"var customerName=jsonData?.user?.name;\r",
+							"var customerEmail=jsonData?.user?.email;\r",
+							"\r",
+							"pm.collectionVariables.set(\"customerId\",customerId);\r",
+							"pm.collectionVariables.set(\"customerName\",customerName);\r",
+							"pm.collectionVariables.set(\"customerEmail\",customerEmail);\r",
+							"\r",
+							"pm.environment.set(\"customerId\",customerId);\r",
+							"pm.environment.set(\"customerName\",customerName);\r",
+							"pm.environment.set(\"customerEmail\",customerEmail);\r",
+							"\r",
+							"pm.test(\"Can't create a user with an SECRET-KEY\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.error.message).to.contains(\"Secret auth key validation failure!\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check the status code is 403\", function () {\r",
+							"    pm.response.to.have.status(401);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time check\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check the POST method request\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([401, 499]);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check the body matches string from response body\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Secret auth key validation failure!\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check the header\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check the status code is Unauthorized\", function () {\r",
+							"    pm.response.to.have.status(\"Unauthorized\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					},
+					{
+						"key": "X-AUTH-SECRET-KEY",
+						"value": "dfgdf",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"{{$randomFullName}}\",\r\n    \"email\":\"{{$randomFirstName}}@test.com\",\r\n    \"password\":\"1234\",\r\n    \"phone_number\":\"{{phoneNumber}}\",\r\n    \"nid\":\"{{nid}}\",\r\n    \"role\":\"Customer\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/user/create",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"user",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Can't Create a User With Invalid Token And Valid  SECRET-KEY",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var randNumber=_.random(1000000,9999999);\r",
+							"var prefix=\"0150\";\r",
+							"var phoneNumber= prefix+randNumber\r",
+							"pm.collectionVariables.set(\"phoneNumber\", phoneNumber)\r",
+							"pm.collectionVariables.set(\"nid\", randNumber)\r",
+							"\r",
+							"pm.environment.set(\"phoneNumber\", phoneNumber)\r",
+							"pm.environment.set(\"nid\", randNumber)"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData= pm.response.json();\r",
+							"var customerId= jsonData?.user?.id;\r",
+							"var customerName=jsonData?.user?.name;\r",
+							"var customerEmail=jsonData?.user?.email;\r",
+							"\r",
+							"pm.collectionVariables.set(\"customerId\",customerId);\r",
+							"pm.collectionVariables.set(\"customerName\",customerName);\r",
+							"pm.collectionVariables.set(\"customerEmail\",customerEmail);\r",
+							"\r",
+							"pm.environment.set(\"customerId\",customerId);\r",
+							"pm.environment.set(\"customerName\",customerName);\r",
+							"pm.environment.set(\"customerEmail\",customerEmail);\r",
+							"\r",
+							"pm.test(\"Can't create a user with an invalid token\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.error.message).to.contains(\"Token expired!\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check the status code is 403\", function () {\r",
+							"    pm.response.to.have.status(403);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time check\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check the POST method request\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([403, 499]);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check the body matches string from response body\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Token expired!\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check the header\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check the status code is Forbidden\", function () {\r",
+							"    pm.response.to.have.status(\"Forbidden\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "ghg",
+						"type": "text"
+					},
+					{
+						"key": "X-AUTH-SECRET-KEY",
+						"value": "{{secretKey}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"{{$randomFullName}}\",\r\n    \"email\":\"{{$randomFirstName}}@test.com\",\r\n    \"password\":\"1234\",\r\n    \"phone_number\":\"{{phoneNumber}}\",\r\n    \"nid\":\"{{nid}}\",\r\n    \"role\":\"Customer\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/user/create",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"user",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Can't Create a User With Invalid SECRET-KEY And Valid Token",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var randNumber=_.random(1000000,9999999);\r",
+							"var prefix=\"0150\";\r",
+							"var phoneNumber= prefix+randNumber\r",
+							"pm.collectionVariables.set(\"phoneNumber\", phoneNumber)\r",
+							"pm.collectionVariables.set(\"nid\", randNumber)\r",
+							"\r",
+							"pm.environment.set(\"phoneNumber\", phoneNumber)\r",
+							"pm.environment.set(\"nid\", randNumber)"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData= pm.response.json();\r",
+							"var customerId= jsonData?.user?.id;\r",
+							"var customerName=jsonData?.user?.name;\r",
+							"var customerEmail=jsonData?.user?.email;\r",
+							"\r",
+							"pm.collectionVariables.set(\"customerId\",customerId);\r",
+							"pm.collectionVariables.set(\"customerName\",customerName);\r",
+							"pm.collectionVariables.set(\"customerEmail\",customerEmail);\r",
+							"\r",
+							"pm.environment.set(\"customerId\",customerId);\r",
+							"pm.environment.set(\"customerName\",customerName);\r",
+							"pm.environment.set(\"customerEmail\",customerEmail);\r",
+							"\r",
+							"pm.test(\"Can't create a user with an SECRET-KEY\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.error.message).to.contains(\"Secret auth key validation failure!\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check the status code is 403\", function () {\r",
+							"    pm.response.to.have.status(401);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time check\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check the POST method request\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([401, 499]);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check the body matches string from response body\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Secret auth key validation failure!\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check the header\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check the status code is Unauthorized\", function () {\r",
+							"    pm.response.to.have.status(\"Unauthorized\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					},
+					{
+						"key": "X-AUTH-SECRET-KEY",
+						"value": "dfgdf",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"{{$randomFullName}}\",\r\n    \"email\":\"{{$randomFirstName}}@test.com\",\r\n    \"password\":\"1234\",\r\n    \"phone_number\":\"{{phoneNumber}}\",\r\n    \"nid\":\"{{nid}}\",\r\n    \"role\":\"Customer\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/user/create",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"user",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create User With Valid Credential",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var randNumber=_.random(1000000,9999999);\r",
+							"var prefix=\"0150\";\r",
+							"var phoneNumber= prefix+randNumber\r",
+							"pm.collectionVariables.set(\"phoneNumber\", phoneNumber)\r",
+							"pm.collectionVariables.set(\"nid\", randNumber)\r",
+							"\r",
+							"pm.environment.set(\"phoneNumber\", phoneNumber)\r",
+							"pm.environment.set(\"nid\", randNumber)"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData= pm.response.json();\r",
+							"let customerId= jsonData.user.id\r",
+							"let customerName=jsonData.user.name;\r",
+							"let customerEmail=jsonData.user.email;\r",
+							"\r",
+							"pm.collectionVariables.set(\"customerId\",customerId)\r",
+							"pm.collectionVariables.set(\"customerName\",customerName)\r",
+							"pm.collectionVariables.set(\"customerEmail\",customerEmail)\r",
+							"\r",
+							"pm.environment.set(\"customerId\",customerId)\r",
+							"pm.environment.set(\"customerName\",customerName)\r",
+							"pm.environment.set(\"customerEmail\",customerEmail)\r",
+							"\r",
+							"\r",
+							"pm.test(\"Check if user is created\",()=>{\r",
+							"    var message= jsonData.message;\r",
+							"    pm.expect(message).contains(\"User created\")\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Status code is 201\", ()=> {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time check\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check the POST method request\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([201, 299]);\r",
+							"\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check the body matches string from response body\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Customer\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check the header\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check the status code is Created\", function () {\r",
+							"    pm.response.to.have.status(\"Created\");\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					},
+					{
+						"key": "X-AUTH-SECRET-KEY",
+						"value": "{{secretKey}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"{{$randomFullName}}\",\r\n    \"email\":\"{{$randomFirstName}}@test.com\",\r\n    \"password\":\"1234\",\r\n    \"phone_number\":\"{{phoneNumber}}\",\r\n    \"nid\":\"{{nid}}\",\r\n    \"role\":\"Customer\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/user/create",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"user",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Can't get user list  With Invalid Token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\" Can't get user list  With Invalid Token\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.error.message).to.contains(\"Token expired!\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check the status code is 403\", function () {\r",
+							"    pm.response.to.have.status(403);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time check\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check the POST method request\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([403, 499]);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check the body matches string from response body\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Token expired!\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check the header\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check the status code is Forbidden\", function () {\r",
+							"    pm.response.to.have.status(\"Forbidden\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "ghdfhg",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/user/list",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"user",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User List",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Check if user list is showing\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.message).to.eql(\"User list\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check if 1st user is showing\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.users[0].id).to.eql(101);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check the status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time check\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check the POST method request\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 299]);\r",
+							"\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check the body matches string from response body\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"SYSTEM\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check the header\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check the status code is OK\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/user/list",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"user",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search User with Wrong Id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Check if user is found\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.message).to.contains(\"User not found\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Check the status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time check\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check the POST method request\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([404, 499]);\r",
+							"\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check the body matches string from response body\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"User not found\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check the header\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check the status code is Not Found\", function () {\r",
+							"    pm.response.to.have.status(\"Not Found\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/user/search/id/100GH",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"user",
+						"search",
+						"id",
+						"100GH"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search User By User Id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Check if user is found\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.message).to.contains(\"User found\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check the status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time check\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check the POST method request\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 299]);\r",
+							"\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check the body matches string from response body\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Customer\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check the header\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check the status code is OK\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/user/search/id/{{customerId}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"user",
+						"search",
+						"id",
+						"{{customerId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Can't Update User With Invalid SECRET-KEY",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Can't update a user with an invalid SECRET-KEY\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.error.message).to.contains(\"Secret auth key validation failure!\");",
+							"});",
+							"",
+							"pm.test(\"Check the status code is 403\", function () {",
+							"    pm.response.to.have.status(401);",
+							"});",
+							"",
+							"pm.test(\"Response time check\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+							"});",
+							"",
+							"pm.test(\"Check the POST method request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([401, 499]);",
+							"});",
+							"",
+							"pm.test(\"Check the body matches string from response body\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"Secret auth key validation failure!\");",
+							"});",
+							"",
+							"pm.test(\"Check the header\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"});",
+							"",
+							"pm.test(\"Check the status code is Unauthorized\", function () {",
+							"    pm.response.to.have.status(\"Unauthorized\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "{{token}}",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "X-AUTH-SECRET-KEY",
+						"value": "bgdfh",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"B9 Test User update\",\r\n    \"email\":\"Jaunita@test.com\",\r\n    \"password\":\"1234\",\r\n    \"phone_number\":\"01505782736\",\r\n    \"nid\":\"123456789\",\r\n    \"role\":\"Customer\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/user/update/{{customerId}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"user",
+						"update",
+						"{{customerId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update user",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "{{token}}",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "X-AUTH-SECRET-KEY",
+						"value": "{{secretKey}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"B9 Test User update\",\r\n    \"email\":\"Jaunita@test.com\",\r\n    \"password\":\"1234\",\r\n    \"phone_number\":\"01505782736\",\r\n    \"nid\":\"123456789\",\r\n    \"role\":\"Customer\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/user/update/{{customerId}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"user",
+						"update",
+						"{{customerId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Can't Delete User  With Invalid Token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Can't Delete User  With Invalid Token\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.error.message).to.contains(\"Token expired!\");",
+							"});",
+							"",
+							"pm.test(\"Check the status code is 403\", function () {",
+							"    pm.response.to.have.status(403);",
+							"});",
+							"",
+							"pm.test(\"Response time check\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+							"});",
+							"",
+							"pm.test(\"Check the POST method request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([403, 499]);",
+							"});",
+							"",
+							"pm.test(\"Check the body matches string from response body\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"Token expired!\");",
+							"});",
+							"",
+							"pm.test(\"Check the header\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"});",
+							"",
+							"pm.test(\"Check the status code is Forbidden\", function () {",
+							"    pm.response.to.have.status(\"Forbidden\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "DFGGHDFH",
+						"type": "text"
+					},
+					{
+						"key": "X-AUTH-SECRET-KEY",
+						"value": "{{secretKey}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/user/delete/{{customerId}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"user",
+						"delete",
+						"{{customerId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Can't Delete User  With Invalid SECRET-KEY",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Can't delete a user with an SECRET-KEY\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.error.message).to.contains(\"Secret auth key validation failure!\");",
+							"});",
+							"",
+							"pm.test(\"Check the status code is 403\", function () {",
+							"    pm.response.to.have.status(401);",
+							"});",
+							"",
+							"pm.test(\"Response time check\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+							"});",
+							"",
+							"pm.test(\"Check the POST method request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([401, 499]);",
+							"});",
+							"",
+							"pm.test(\"Check the body matches string from response body\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"Secret auth key validation failure!\");",
+							"});",
+							"",
+							"pm.test(\"Check the header\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"});",
+							"",
+							"pm.test(\"Check the status code is Unauthorized\", function () {",
+							"    pm.response.to.have.status(\"Unauthorized\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					},
+					{
+						"key": "X-AUTH-SECRET-KEY",
+						"value": "fghfg",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/user/delete/{{customerId}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"user",
+						"delete",
+						"{{customerId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"",
+							"pm.test(\"User Can Login With Valid Credential\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.message).to.contains(\"User deleted successfully\");",
+							"});",
+							"",
+							"pm.test(\"Check the status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response time check\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000)",
+							"});",
+							"",
+							"pm.test(\"Check the POST method request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 299]);",
+							"",
+							"});",
+							"",
+							"pm.test(\"Check the body matches string from response body\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"User deleted successfully\");",
+							"});",
+							"",
+							"pm.test(\"Check the header\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"});",
+							"",
+							"pm.test(\"Check the status code is OK\", function () {",
+							"    pm.response.to.have.status(\"OK\");",
+							"});",
+							"",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					},
+					{
+						"key": "X-AUTH-SECRET-KEY",
+						"value": "{{secretKey}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/user/delete/{{customerId}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"user",
+						"delete",
+						"{{customerId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Can't Create  Agent With Invalid Token",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var randNumber=_.random(1000000,9999999);\r",
+							"var prefix=\"0150\";\r",
+							"var phoneNumber= prefix+randNumber\r",
+							"pm.collectionVariables.set(\"phoneNumber\", phoneNumber)\r",
+							"pm.collectionVariables.set(\"nid\", randNumber)\r",
+							"\r",
+							"pm.environment.set(\"phoneNumber\", phoneNumber)\r",
+							"pm.environment.set(\"nid\", randNumber)"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Can't create a agent with an invalid token\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.error.message).to.contains(\"Token expired!\");",
+							"});",
+							"",
+							"pm.test(\"Check the status code is 403\", function () {",
+							"    pm.response.to.have.status(403);",
+							"});",
+							"",
+							"pm.test(\"Response time check\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+							"});",
+							"",
+							"pm.test(\"Check the POST method request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([403, 499]);",
+							"});",
+							"",
+							"pm.test(\"Check the body matches string from response body\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"Token expired!\");",
+							"});",
+							"",
+							"pm.test(\"Check the header\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"});",
+							"",
+							"pm.test(\"Check the status code is Forbidden\", function () {",
+							"    pm.response.to.have.status(\"Forbidden\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "ghhjgfg",
+						"type": "text"
+					},
+					{
+						"key": "X-AUTH-SECRET-KEY",
+						"value": "{{secretKey}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"{{$randomFullName}}\",\r\n    \"email\":\"{{$randomFirstName}}@test.com\",\r\n    \"password\":\"1234\",\r\n    \"phone_number\":\"{{phoneNumber}}\",\r\n    \"nid\":\"{{nid}}\",\r\n    \"role\":\"Agent\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/user/create",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"user",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Can't Create a Agent With Invalid SECRET-KEY",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var randNumber=_.random(1000000,9999999);\r",
+							"var prefix=\"0150\";\r",
+							"var phoneNumber= prefix+randNumber\r",
+							"pm.collectionVariables.set(\"phoneNumber\", phoneNumber)\r",
+							"pm.collectionVariables.set(\"nid\", randNumber)\r",
+							"\r",
+							"pm.environment.set(\"phoneNumber\", phoneNumber)\r",
+							"pm.environment.set(\"nid\", randNumber)"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Can't create a agent with an SECRET-KEY\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.error.message).to.contains(\"Secret auth key validation failure!\");",
+							"});",
+							"",
+							"pm.test(\"Check the status code is 403\", function () {",
+							"    pm.response.to.have.status(401);",
+							"});",
+							"",
+							"pm.test(\"Response time check\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+							"});",
+							"",
+							"pm.test(\"Check the POST method request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([401, 499]);",
+							"});",
+							"",
+							"pm.test(\"Check the body matches string from response body\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"Secret auth key validation failure!\");",
+							"});",
+							"",
+							"pm.test(\"Check the header\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"});",
+							"",
+							"pm.test(\"Check the status code is Unauthorized\", function () {",
+							"    pm.response.to.have.status(\"Unauthorized\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					},
+					{
+						"key": "X-AUTH-SECRET-KEY",
+						"value": "gfgfg",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"{{$randomFullName}}\",\r\n    \"email\":\"{{$randomFirstName}}@test.com\",\r\n    \"password\":\"1234\",\r\n    \"phone_number\":\"{{phoneNumber}}\",\r\n    \"nid\":\"{{nid}}\",\r\n    \"role\":\"Agent\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/user/create",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"user",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Can't Create Agent With Invalid Token And Valid  SECRET-KEY",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var randNumber=_.random(1000000,9999999);\r",
+							"var prefix=\"0150\";\r",
+							"var phoneNumber= prefix+randNumber\r",
+							"pm.collectionVariables.set(\"phoneNumber\", phoneNumber)\r",
+							"pm.collectionVariables.set(\"nid\", randNumber)\r",
+							"\r",
+							"pm.environment.set(\"phoneNumber\", phoneNumber)\r",
+							"pm.environment.set(\"nid\", randNumber)"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Can't create a agent with an invalid token and valid SECRET-KEY\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.error.message).to.contains(\"Token expired!\");",
+							"});",
+							"",
+							"pm.test(\"Check the status code is 403\", function () {",
+							"    pm.response.to.have.status(403);",
+							"});",
+							"",
+							"pm.test(\"Response time check\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+							"});",
+							"",
+							"pm.test(\"Check the POST method request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([403, 499]);",
+							"});",
+							"",
+							"pm.test(\"Check the body matches string from response body\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"Token expired!\");",
+							"});",
+							"",
+							"pm.test(\"Check the header\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"});",
+							"",
+							"pm.test(\"Check the status code is Forbidden\", function () {",
+							"    pm.response.to.have.status(\"Forbidden\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "fghjfghj",
+						"type": "text"
+					},
+					{
+						"key": "X-AUTH-SECRET-KEY",
+						"value": "{{secretKey}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"{{$randomFullName}}\",\r\n    \"email\":\"{{$randomFirstName}}@test.com\",\r\n    \"password\":\"1234\",\r\n    \"phone_number\":\"{{phoneNumber}}\",\r\n    \"nid\":\"{{nid}}\",\r\n    \"role\":\"Agent\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/user/create",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"user",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Can't Create Agent With Invalid SECRET-KEY And Valid Token",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var randNumber=_.random(1000000,9999999);\r",
+							"var prefix=\"0150\";\r",
+							"var phoneNumber= prefix+randNumber\r",
+							"pm.collectionVariables.set(\"phoneNumber\", phoneNumber)\r",
+							"pm.collectionVariables.set(\"nid\", randNumber)\r",
+							"\r",
+							"pm.environment.set(\"phoneNumber\", phoneNumber)\r",
+							"pm.environment.set(\"nid\", randNumber)"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Can't create a agent with an invalid SECRET-KEY and valid token\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.error.message).to.contains(\"Secret auth key validation failure!\");",
+							"});",
+							"",
+							"pm.test(\"Check the status code is 403\", function () {",
+							"    pm.response.to.have.status(401);",
+							"});",
+							"",
+							"pm.test(\"Response time check\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+							"});",
+							"",
+							"pm.test(\"Check the POST method request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([401, 499]);",
+							"});",
+							"",
+							"pm.test(\"Check the body matches string from response body\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"Secret auth key validation failure!\");",
+							"});",
+							"",
+							"pm.test(\"Check the header\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"});",
+							"",
+							"pm.test(\"Check the status code is Unauthorized\", function () {",
+							"    pm.response.to.have.status(\"Unauthorized\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					},
+					{
+						"key": "X-AUTH-SECRET-KEY",
+						"value": "hgghhggh",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"{{$randomFullName}}\",\r\n    \"email\":\"{{$randomFirstName}}@test.com\",\r\n    \"password\":\"1234\",\r\n    \"phone_number\":\"{{phoneNumber}}\",\r\n    \"nid\":\"{{nid}}\",\r\n    \"role\":\"Agent\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/user/create",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"user",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Agent With Valid Credential",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var randNumber=_.random(1000000,9999999);\r",
+							"var prefix=\"0150\";\r",
+							"var phoneNumber= prefix+randNumber\r",
+							"pm.collectionVariables.set(\"phoneNumber\", phoneNumber)\r",
+							"pm.collectionVariables.set(\"nid\", randNumber)\r",
+							"\r",
+							"pm.environment.set(\"phoneNumber\", phoneNumber)\r",
+							"pm.environment.set(\"nid\", randNumber)"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					},
+					{
+						"key": "X-AUTH-SECRET-KEY",
+						"value": "{{secretKey}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"{{$randomFullName}}\",\r\n    \"email\":\"{{$randomFirstName}}@test.com\",\r\n    \"password\":\"1234\",\r\n    \"phone_number\":\"{{phoneNumber}}\",\r\n    \"nid\":\"{{nid}}\",\r\n    \"role\":\"Agent\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/user/create",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"user",
+						"create"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "inherit"
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://dmoney.roadtocareer.net",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNhbG1hbkByb2FkdG9jYXJlZXIubmV0IiwicGFzc3dvcmQiOiIxMjM0IiwiaWF0IjoxNzAwOTAyOTcwLCJleHAiOjE3MDA5MDQ3NzB9.omyoCW8iYelDBVkasHIp5EPmZZF5tf54OgRHZyWTthU"
+		},
+		{
+			"key": "secretKey",
+			"value": "ROADTOSDET",
+			"type": "string"
+		},
+		{
+			"key": "nid",
+			"value": 3696766
+		},
+		{
+			"key": "customerId",
+			"value": 40886
+		},
+		{
+			"key": "customerName",
+			"value": "Robin Parisian"
+		},
+		{
+			"key": "customerEmail",
+			"value": "Theodore@test.com"
+		},
+		{
+			"key": "customerPhoneNumber",
+			"value": "01507686164"
+		},
+		{
+			"key": "phoneNumber",
+			"value": "01503696766"
+		}
+	]
+}
