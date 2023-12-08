@@ -52,7 +52,7 @@
 ## ## How to run this project
 
 - clone this project
-- open this project in visual studio code
+- open this project in Visual Studio code
 
 ## npm install
 
